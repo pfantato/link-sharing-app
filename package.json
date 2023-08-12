@@ -1,0 +1,40 @@
+{
+  "name": "link-sharing-app",
+  "version": "0.0.1",
+  "license": "ISC",
+  "author": {
+    "name": "Patrick Fantato",
+    "email": "me@pfantato.space",
+    "url": "https://github.com/pfantato"
+  },
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "NODE_ENV=test node --test test/",
+    "test:cov-native": "NODE_ENV=test node --experimental-test-coverage --test test/",
+    "test:cov": "NODE_ENV=test npx c8 --exclude ./index.js --reporter html --reporter text node --test test/",
+    "test:watch": "NODE_ENV=test node --watch --test test/"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.1.1",
+    "next": "13.4.13",
+    "next-auth": "^4.23.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwindcss": "3.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.10",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.47.0",
+    "eslint-config-next": "^13.4.13",
+    "postcss": "^8.4.27",
+    "prisma": "^5.1.1",
+    "typescript": "^5.1.6"
+  }
+}
