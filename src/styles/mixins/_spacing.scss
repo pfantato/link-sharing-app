@@ -1,0 +1,43 @@
+@use "sass:meta";
+@use "../functions/spacing" as fn;
+@use "../variables/spacing" as spacing;
+
+@mixin spacing-variables {
+  // Mirror SASS variables as CSS variables
+  @each $name, $value in meta.module-variables(spacing) {
+    --#{$name}: #{$value};
+  }
+}
+
+@mixin spacing-utility-classes {
+  @each $name, $value in meta.module-variables(spacing) {
+    .m-#{fn.get-size($name)} {
+      margin: $value;
+    }
+    .mt#{fn.get-size($name)} {
+      margin-top: $value;
+    }
+    .mr#{fn.get-size($name)} {
+      margin-right: $value;
+    }
+    .mb#{fn.get-size($name)} {
+      margin-bottom: $value;
+    }
+    .ml#{fn.get-size($name)} {
+      margin-left: $value;
+    }
+
+    .p#{fn.get-size($name)} {
+      padding: $value;
+    }
+    .pt#{fn.get-size($name)} {
+      padding-top: $value;
+    }
+    .pr#{fn.get-size($name)} {
+      padding-right: $value;
+    }
+    .pb#{fn.get-size($name)} {
+      padding-bottom: $value;
+    }
+  }
+}

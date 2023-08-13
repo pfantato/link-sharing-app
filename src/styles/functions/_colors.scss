@@ -1,0 +1,9 @@
+//check if variable doesn't have dark in name
+@function is-light($color) {
+  @return str-index($color, "dark") == null;
+}
+
+// remove "dark-mode" from variable name
+@function get-color-name($color) {
+  @return str-slice($color, 10);
+}

@@ -1,0 +1,9 @@
+@use "sass:meta";
+@use "../variables/theme" as vars;
+
+@mixin theme-variables {
+  // Mirror SASS variables as CSS variables
+  @each $name, $value in meta.module-variables(vars) {
+    --#{$name}: #{$value};
+  }
+}

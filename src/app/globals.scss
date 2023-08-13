@@ -1,0 +1,15 @@
+:root {
+  @include color-variables;
+  @include spacing-variables;
+  @include theme-variables;
+  @include typography-variables;
+}
+
+body {
+  color: var(--dark-gray, $dark-gray);
+  background: var(--light-gray, $light-gray);
+}
+
+@include color-utility-classes;
+@include spacing-utility-classes;
+@include typography-utility-classes;

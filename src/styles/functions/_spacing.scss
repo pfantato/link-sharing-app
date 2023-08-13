@@ -1,0 +1,5 @@
+@function get-size($name) {
+  // Remove spacing- from the name
+  $name: str-slice($name, 8);
+  @return $name;
+}

@@ -1,0 +1,34 @@
+@use "sass:meta";
+@use "../functions/colors" as fn;
+@use "../variables/colors" as colors;
+
+@mixin color-variables {
+  // Mirror SASS variables as CSS variables
+  @each $name, $value in meta.module-variables(colors) {
+    @if fn.is-light($name) {
+      --#{$name}: #{$value};
+    }
+  }
+
+  @include dark-mode {
+    // Mirror SASS variables as CSS variables
+    @each $name, $value in meta.module-variables(colors) {
+      @if not fn.is-light($name) {
+        --#{fn.get-color-name($name)}: #{$value};
+      }
+    }
+  }
+}
+
+@mixin color-utility-classes {
+  @each $name, $value in meta.module-variables(colors) {
+    @if fn.is-light($name) {
+      .#{$name} {
+        color: var(--#{$name});
+      }
+      .bg-#{$name} {
+        background: var(--#{$name});
+      }
+    }
+  }
+}

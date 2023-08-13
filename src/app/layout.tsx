@@ -1,7 +1,8 @@
-import { Header } from "@/components";
-import "./globals.css";
 import type { Metadata } from "next";
+
 import { Instrument_Sans } from "next/font/google";
+
+import "./globals.scss";
 
 const instrumentSans = Instrument_Sans({ subsets: ["latin"] });
 
@@ -18,7 +19,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={instrumentSans.className}>
-        <Header />
         {children}
       </body>
     </html>
