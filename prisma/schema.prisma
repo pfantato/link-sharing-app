@@ -11,7 +11,7 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(cuid()) @map("_id") @db.ObjectId
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
   email    String  @unique
   password String
   username String? @unique
@@ -25,21 +25,21 @@ model User {
 }
 
 model Platform {
-  id      String @id @default(cuid()) @map("_id") @db.ObjectId
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
   name    String @unique
   logoUrl String
 
-  backgroundColor String?
-  foregroundColor String?
+  backgroundColor String
+  foregroundColor String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  links Link[] @ignore
+  links Link[]
 }
 
 model Link {
-  id          String  @id @default(cuid()) @map("_id") @db.ObjectId
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
   label       String
   url         String
   isPublished Boolean @default(false)
