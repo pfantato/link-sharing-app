@@ -1,0 +1,34 @@
+.platform {
+  // Layout
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: var(--spacing-xs, $spacing-xs);
+  padding: var(--spacing-md, $spacing-md);
+
+  // Style
+  border-radius: var(--border-radius, $border-radius);
+  text-decoration: none;
+}
+
+.icon {
+  --user-link-icon-size: 16px;
+
+  flex: 0 var(--user-link-icon-size, 16px);
+  height: var(--user-link-icon-size, 16px);
+  width: var(--user-link-icon-size, 16px);
+}
+
+.name {
+  @include body-m;
+  flex: 1 auto;
+}
+
+.arrow {
+  --user-link-icon-size: 16px;
+
+  flex: 0 var(--user-link-icon-size, 16px);
+  height: var(--user-link-icon-size, 16px);
+  width: var(--user-link-icon-size, 16px);
+}

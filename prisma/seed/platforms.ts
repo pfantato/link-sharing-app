@@ -3,12 +3,10 @@ import { PrismaClient } from "@prisma/client";
 export default async function seedPlatformCollection(prisma: PrismaClient) {
   const gitHub = await prisma.platform.upsert({
     where: { name: "GitHub" },
-    update: {
-      logoUrl: "github",
-    },
+    update: {},
     create: {
       name: "GitHub",
-      logoUrl: "github",
+      identifier: "github",
       backgroundColor: "#1A1A1A",
       foregroundColor: "#FFFFFF",
     },
@@ -16,12 +14,10 @@ export default async function seedPlatformCollection(prisma: PrismaClient) {
 
   const frontEndMentor = await prisma.platform.upsert({
     where: { name: "Frontend Mentor" },
-    update: {
-      logoUrl: "frontend-mentor",
-    },
+    update: {},
     create: {
       name: "Frontend Mentor",
-      logoUrl: "frontend-mentor",
+      identifier: "frontend-mentor",
       backgroundColor: "#FFFFFF",
       foregroundColor: "#333333",
     },
@@ -29,12 +25,10 @@ export default async function seedPlatformCollection(prisma: PrismaClient) {
 
   const twitter = await prisma.platform.upsert({
     where: { name: "Twitter" },
-    update: {
-      logoUrl: "twitter",
-    },
+    update: {},
     create: {
       name: "Twitter",
-      logoUrl: "twitter",
+      identifier: "twitter",
       backgroundColor: "#43B7E9",
       foregroundColor: "#FFFFFF",
     },
@@ -42,12 +36,10 @@ export default async function seedPlatformCollection(prisma: PrismaClient) {
 
   const linkedIn = await prisma.platform.upsert({
     where: { name: "LinkedIn" },
-    update: {
-      logoUrl: "linkedin",
-    },
+    update: {},
     create: {
       name: "LinkedIn",
-      logoUrl: "linkedin",
+      identifier: "linkedin",
       backgroundColor: "#2D68FF",
       foregroundColor: "#FFFFFF",
     },
@@ -55,12 +47,10 @@ export default async function seedPlatformCollection(prisma: PrismaClient) {
 
   const youTube = await prisma.platform.upsert({
     where: { name: "YouTube" },
-    update: {
-      logoUrl: "youtube",
-    },
+    update: {},
     create: {
       name: "YouTube",
-      logoUrl: "youtube",
+      identifier: "youtube",
       backgroundColor: "#EE3939",
       foregroundColor: "#FFFFFF",
     },
@@ -68,12 +58,10 @@ export default async function seedPlatformCollection(prisma: PrismaClient) {
 
   const facebook = await prisma.platform.upsert({
     where: { name: "Facebook" },
-    update: {
-      logoUrl: "facebook",
-    },
+    update: {},
     create: {
       name: "Facebook",
-      logoUrl: "facebook",
+      identifier: "facebook",
       backgroundColor: "#2442AC",
       foregroundColor: "#FFFFFF",
     },
@@ -81,12 +69,10 @@ export default async function seedPlatformCollection(prisma: PrismaClient) {
 
   const twitch = await prisma.platform.upsert({
     where: { name: "Twitch" },
-    update: {
-      logoUrl: "twitch",
-    },
+    update: {},
     create: {
       name: "Twitch",
-      logoUrl: "twitch",
+      identifier: "twitch",
       backgroundColor: "#EE3FC8",
       foregroundColor: "#FFFFFF",
     },
@@ -94,12 +80,10 @@ export default async function seedPlatformCollection(prisma: PrismaClient) {
 
   const devTo = await prisma.platform.upsert({
     where: { name: "Dev.to" },
-    update: {
-      logoUrl: "devto",
-    },
+    update: {},
     create: {
       name: "Dev.to",
-      logoUrl: "devto",
+      identifier: "devto",
       backgroundColor: "#333333",
       foregroundColor: "#FFFFFF",
     },
@@ -107,12 +91,10 @@ export default async function seedPlatformCollection(prisma: PrismaClient) {
 
   const codewars = await prisma.platform.upsert({
     where: { name: "Codewars" },
-    update: {
-      logoUrl: "codewars",
-    },
+    update: {},
     create: {
       name: "Codewars",
-      logoUrl: "codewars",
+      identifier: "codewars",
       backgroundColor: "#8A1A50",
       foregroundColor: "#FFFFFF",
     },
@@ -120,12 +102,10 @@ export default async function seedPlatformCollection(prisma: PrismaClient) {
 
   const freeCodeCamp = await prisma.platform.upsert({
     where: { name: "freeCodeCamp" },
-    update: {
-      logoUrl: "freecodecamp",
-    },
+    update: {},
     create: {
       name: "freeCodeCamp",
-      logoUrl: "freecodecamp",
+      identifier: "freecodecamp",
       backgroundColor: "#302267",
       foregroundColor: "#FFFFFF",
     },
@@ -133,12 +113,10 @@ export default async function seedPlatformCollection(prisma: PrismaClient) {
 
   const gitLab = await prisma.platform.upsert({
     where: { name: "GitLab" },
-    update: {
-      logoUrl: "gitlab",
-    },
+    update: {},
     create: {
       name: "GitLab",
-      logoUrl: "gitlab",
+      identifier: "gitlab",
       backgroundColor: "#EB4925",
       foregroundColor: "#FFFFFF",
     },
@@ -146,12 +124,10 @@ export default async function seedPlatformCollection(prisma: PrismaClient) {
 
   const hashnode = await prisma.platform.upsert({
     where: { name: "Hashnode" },
-    update: {
-      logoUrl: "hashnode",
-    },
+    update: {},
     create: {
       name: "Hashnode",
-      logoUrl: "hashnode",
+      identifier: "hashnode",
       backgroundColor: "#0330D1",
       foregroundColor: "#FFFFFF",
     },
@@ -159,12 +135,10 @@ export default async function seedPlatformCollection(prisma: PrismaClient) {
 
   const stackOverflow = await prisma.platform.upsert({
     where: { name: "Stack Overflow" },
-    update: {
-      logoUrl: "stackoverflow",
-    },
+    update: {},
     create: {
       name: "Stack Overflow",
-      logoUrl: "stackoverflow",
+      identifier: "stackoverflow",
       backgroundColor: "#EC7100",
       foregroundColor: "#FFFFFF",
     },

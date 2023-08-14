@@ -1,0 +1,12 @@
+.form {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--spacing-lg, $spacing-lg);
+  width: 100%;
+}
+
+.hint {
+  color: var(--gray, $gray);
+
+  @include body-s;
+}

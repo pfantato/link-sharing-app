@@ -7,9 +7,9 @@ const sassOptions = {
 
 // @see https://nextjs.org/docs/advanced-features/compiler
 const compiler = {
-  removeConsole: {
-    exclude: ["error"],
-  },
+    // removeConsole: {
+    //   exclude: ["error"],
+    // },
 };
 
 const webpack = (

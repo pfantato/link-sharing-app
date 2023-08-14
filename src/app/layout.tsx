@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 import { Instrument_Sans } from "next/font/google";
 
+import { IconSprite } from "@/components";
+
 import "./globals.scss";
 
 const instrumentSans = Instrument_Sans({ subsets: ["latin"] });
@@ -20,6 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={instrumentSans.className}>
         {children}
+        <IconSprite />
       </body>
     </html>
   );

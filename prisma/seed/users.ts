@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { hash } from "bcryptjs";
 
 export default async function seedUserCollection(prisma: PrismaClient) {
   const testUser = await prisma.user.upsert({
@@ -6,7 +7,7 @@ export default async function seedUserCollection(prisma: PrismaClient) {
     update: {},
     create: {
       email: "test@test.com",
-      password: "test",
+      password: await hash("test1234", 12),
       name: "Test User",
       username: "testuser",
     },
