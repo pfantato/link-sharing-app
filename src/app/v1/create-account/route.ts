@@ -2,7 +2,7 @@ import "server-only";
 import { hash } from "bcryptjs";
 
 import { HttpStatusCodes, sendApiResponse } from "@/lib";
-import { createAccount, login } from "@/service";
+import { createAccount } from "@/service";
 
 export type CreateAccountForm = {
   email: string;

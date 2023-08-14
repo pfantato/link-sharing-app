@@ -23,7 +23,6 @@ export const LoginForm = () => {
     password,
   }) => {
     await signIn("credentials", {
-      redirect: false,
       email,
       password,
       callbackUrl,

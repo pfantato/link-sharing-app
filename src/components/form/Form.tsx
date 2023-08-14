@@ -6,6 +6,7 @@ import type {
   Control,
   DefaultValues,
   FieldValues,
+  Path,
   SubmitHandler,
 } from "react-hook-form";
 
@@ -68,8 +69,8 @@ export const Form = <FormSchema extends FieldValues>({
       {Object.entries(inputs).map(([name, input]) => (
         <Controller
           key={name}
-          name={name}
-          control={control as Control<FieldValues>}
+          name={name as Path<FormSchema>}
+          control={control}
           rules={{ required: input.required }}
           render={({ field }) => (
             <Input
