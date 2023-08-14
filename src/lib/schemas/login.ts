@@ -5,4 +5,6 @@ export const loginSchema = z.object({
   password: z.string(),
 });
 
+export type Credentials = z.infer<typeof loginSchema>;
+
 export default loginSchema;

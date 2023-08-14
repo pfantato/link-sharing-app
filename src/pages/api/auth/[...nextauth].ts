@@ -1,21 +1,15 @@
-import "client-only";
-
 import type { PrismaClient } from "@prisma/client";
 import type { AuthOptions, Session, User } from "next-auth";
 
-import type { LoginForm } from "@/app/v1/login/route";
-
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
-import Auth0Provider from "next-auth/providers/auth0";
-import FacebookProvider from "next-auth/providers/facebook";
 import TwitchProvider from "next-auth/providers/twitch";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { PrismaAdapter } from "@auth/prisma-adapter";
 
 import { prisma } from "@/lib";
-import { login } from "@/service";
 import { JWT } from "next-auth/jwt";
+import { UserService } from "@/service";
 
 export const authOptions = {
   adapter: PrismaAdapter(prisma as PrismaClient),
@@ -24,12 +18,12 @@ export const authOptions = {
   },
   providers: [
     GithubProvider({
-      clientId: "428c46d973869cae3e23",
-      clientSecret: "17bb3bd730d686de12de44bd9ba682617a8e937b",
+      clientId: `${process.env.GITHUB_CLIENT_ID}`,
+      clientSecret: `${process.env.GITHUB_CLIENT_SECRET}`,
     }),
     TwitchProvider({
-      clientId: "g6uy57wlhw64fsb2roqbv9ipb9ama6",
-      clientSecret: "uo3eb3m646890gozop61gywaq6lwmr",
+      clientId: `${process.env.TWITCH_CLIENT_ID}`,
+      clientSecret: `${process.env.TWITCH_CLIENT_SECRET}`,
     }),
     CredentialsProvider({
       name: "Credentials",
@@ -38,15 +32,19 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const { data: user } = await fetch("/v1/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(credentials),
-        }).then((res) => res.json());
-        if (user) return user;
-        return null;
+        const service = new UserService();
+        const { email, password } = credentials || {};
+
+        if (!email || !password) return null;
+
+        const user = await service.authenticate({
+          email,
+          password,
+        });
+
+        if (!user) return null;
+
+        return user;
       },
     }),
   ],
@@ -62,7 +60,6 @@ export const authOptions = {
         user: {
           ...session.user,
           id: token.id,
-          randomKey: token.randomKey,
         },
       };
     },

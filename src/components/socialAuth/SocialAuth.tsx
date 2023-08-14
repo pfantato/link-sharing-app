@@ -26,16 +26,12 @@ export const SocialAuth = () => {
   };
 
   const {
-    data: { data: platforms },
+    data: platforms,
     isLoading,
     error,
   } = useSWR("/v1/platforms", fetchFn, {
     revalidateOnFocus: false,
   });
-
-  useEffect(() => {
-    console.log(platforms);
-  }, [platforms]);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>

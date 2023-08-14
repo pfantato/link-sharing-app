@@ -1,5 +1,5 @@
 "use client";
-import type { InputHTMLAttributes } from "react";
+import { forwardRef, type InputHTMLAttributes } from "react";
 
 import clsx from "clsx";
 
@@ -13,24 +13,26 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   errorMessage?: string;
   hasError?: boolean;
 };
-
-export const Input = ({
-  label,
-  id,
-  name,
-  type,
-  placeholder,
-  required,
-  disabled = false,
-  active = false,
-  value,
-  hint,
-  onChange = () => {},
-  errorMessage,
-  hasError,
-  icon,
-  ...inputProps
-}: InputProps) => {
+export const Input = forwardRef(function InputComponent(
+  {
+    label,
+    id,
+    name,
+    type,
+    placeholder,
+    required,
+    disabled = false,
+    active = false,
+    value,
+    hint,
+    onChange = () => {},
+    errorMessage,
+    hasError,
+    icon,
+    ...inputProps
+  }: InputProps,
+  ref
+) {
   const stateClassNames = clsx(
     active && styles.active,
     disabled && styles.disabled,
@@ -77,4 +79,4 @@ export const Input = ({
       </div>
     </div>
   );
-};
+});

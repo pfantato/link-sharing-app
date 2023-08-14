@@ -5,14 +5,16 @@ import type { CreateAccountFormSchema } from "@/lib/schemas";
 
 import { SubmitHandler } from "react-hook-form";
 
-import { createAccountFormSchema, useCsrfToken } from "@/lib";
+import { HttpStatusCodes, createAccountFormSchema, useCsrfToken } from "@/lib";
 
 import { SocialAuth } from "../socialAuth";
 
 import { Form, FormInputs } from "./Form";
+import { useRouter } from "next/navigation";
 
 export const CreateAccountForm = () => {
   const csrfToken = useCsrfToken();
+  const router = useRouter();
 
   const handleCreateAccount: SubmitHandler<CreateAccountFormSchema> = async ({
     email,
@@ -29,7 +31,9 @@ export const CreateAccountForm = () => {
       }),
     }).then((res) => res.json());
 
-    console.info(response);
+    if (response.status === HttpStatusCodes.OK) {
+      router.push("/dashboard");
+    }
   };
 
   const formInputs: FormInputs = {

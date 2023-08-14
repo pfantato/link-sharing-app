@@ -4,7 +4,7 @@ import "client-only";
 import type { SubmitHandler } from "react-hook-form";
 import type { CreateAccountFormSchema } from "@/lib/schemas";
 
-import { getCsrfToken, getProviders, signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 import { loginSchema, useCsrfToken } from "@/lib";
 
@@ -16,14 +16,13 @@ export const LoginForm = () => {
   const csrfToken = useCsrfToken();
 
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams?.get("callbackUrl") || "/profile";
+  const callbackUrl = searchParams?.get("callbackUrl") || "/dashboard";
 
   const handleCreateAccount: SubmitHandler<CreateAccountFormSchema> = async ({
     email,
     password,
   }) => {
     await signIn("credentials", {
-      redirect: false,
       email,
       password,
       callbackUrl,

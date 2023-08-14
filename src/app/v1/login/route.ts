@@ -1,30 +1,34 @@
 import "server-only";
 
-import { HttpStatusCodes, sendApiResponse } from "@/lib";
-import { login } from "@/service";
-
-export type LoginForm = {
-  email: string;
-  password: string;
-};
+import {
+  Credentials,
+  HttpStatusCodes,
+  loginSchema,
+  sendApiResponse,
+} from "@/lib";
+import { UserService } from "@/service";
 
 type LoginRequest = Request & {
-  body: LoginForm;
+  body: Credentials;
 };
+
+const service = new UserService();
 
 export async function POST(req: LoginRequest) {
   const { email, password } = await req.json();
 
-  if (!email || !password)
+  const validate = loginSchema.safeParse({ email, password });
+
+  if (!validate.success)
     return sendApiResponse[HttpStatusCodes.BAD_REQUEST]({
-      message: "Missing fields",
+      message: "Invalid email or password",
     });
 
-  const user = await login({ email, password });
+  const user = await service.authenticate({ email, password });
 
   if (!user)
     return sendApiResponse[HttpStatusCodes.UNAUTHORIZED]({
-      message: "Invalid credentials",
+      message: "Unauthorized",
     });
 
   return sendApiResponse[HttpStatusCodes.OK](user);

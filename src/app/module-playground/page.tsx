@@ -1,9 +1,18 @@
+"use client";
+import type { Platform } from "@prisma/client";
+
+import useSWR from "swr";
+
 import { Button, Icon, Input, PlatformButton } from "@/components";
-import { prisma } from "@/lib";
 
 import styles from "./page.module.scss";
 
-export default async function PlaygroundPage() {
+const fetchFn = async (url: string, options: RequestInit) => {
+  const res = await fetch(url, options);
+  return res.json();
+};
+
+export default function PlaygroundPage() {
   const classNames = {
     root: styles.root,
     header: styles.header,
@@ -14,7 +23,13 @@ export default async function PlaygroundPage() {
 
   const placeholderIcon = <Icon iconName="link" fill={"var(--red)"} />;
 
-  const platforms = await prisma?.platform.findMany();
+  const {
+    data: platforms,
+    isLoading,
+    error,
+  } = useSWR("/v1/platforms", fetchFn, {
+    revalidateOnFocus: false,
+  });
 
   return (
     <div className={classNames.root}>
@@ -92,25 +107,26 @@ export default async function PlaygroundPage() {
         <div className={classNames.subSection}>
           <h3>List preview</h3>
           <div className={classNames.content}>
-            {platforms?.map((platform) => {
-              return (
-                <PlatformButton
-                  link={
-                    {
-                      url: "https://google.com",
-                      platform: {
-                        id: platform.id,
-                        name: platform.name,
-                        logoUrl: platform.identifier,
-                        backgroundColor: platform.backgroundColor,
-                        foregroundColor: platform.foregroundColor,
-                      },
-                    } as any
-                  }
-                  key={platform.id}
-                />
-              );
-            })}
+            {!isLoading &&
+              platforms?.map((platform: Platform) => {
+                return (
+                  <PlatformButton
+                    link={
+                      {
+                        url: "https://google.com",
+                        platform: {
+                          id: platform.id,
+                          name: platform.name,
+                          logoUrl: platform.identifier,
+                          backgroundColor: platform.backgroundColor,
+                          foregroundColor: platform.foregroundColor,
+                        },
+                      } as any
+                    }
+                    key={platform.id}
+                  />
+                );
+              })}
           </div>
         </div>
       </section>

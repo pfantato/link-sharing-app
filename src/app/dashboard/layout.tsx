@@ -1,35 +1,30 @@
-// "use client";
-
 import type { Metadata } from "next";
-import type { Session } from "next-auth";
+// import type { Session } from "next-auth";
 
-import { Instrument_Sans } from "next/font/google";
+// import { AuthOptions, getServerSession } from "next-auth";
 
 import { Header } from "@/components";
 
-import { DashboardProvider } from "@/lib";
-
-import "./globals.scss";
-
-const instrumentSans = Instrument_Sans({ subsets: ["latin"] });
+// import { DashboardProvider } from "@/lib";
+// import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 export const metadata: Metadata = {
   title: "Dashboard | Link Sharing App",
   description: "User's dashboard",
 };
 
-type DashboardLayoutProps = React.PropsWithChildren<{
-  session: Session;
-}>;
+type DashboardLayoutProps = React.PropsWithChildren;
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
-  session,
 }: DashboardLayoutProps) {
+  // const session = await getServerSession(authOptions as AuthOptions);
   return (
-    <DashboardProvider session={session}>
+    // <DashboardProvider session={session as Session}>
+    <div>
       <Header />
       {children}
-    </DashboardProvider>
+    </div>
+    // </DashboardProvider>
   );
 }
