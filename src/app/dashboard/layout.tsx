@@ -1,16 +1,14 @@
 // "use client";
 
 import type { Metadata } from "next";
-import { AuthOptions, getServerSession, type Session } from "next-auth";
+import type { Session } from "next-auth";
 
-import { Instrument_Sans } from "next/font/google";
+import { AuthOptions, getServerSession } from "next-auth";
 
 import { Header } from "@/components";
 
 import { DashboardProvider } from "@/lib";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-
-const instrumentSans = Instrument_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Dashboard | Link Sharing App",

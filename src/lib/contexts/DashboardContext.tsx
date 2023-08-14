@@ -9,6 +9,7 @@ import { SessionProvider } from "next-auth/react";
 import { Session } from "next-auth";
 
 export type DashboardView = "links" | "profile" | "preview";
+type DashboardProviderProps = React.PropsWithChildren<{ session: Session }>;
 
 export const [useDashboard, DashboardContextProvider] = createSafeContext<{
   view: DashboardView;
@@ -16,8 +17,6 @@ export const [useDashboard, DashboardContextProvider] = createSafeContext<{
   user: User | null;
   setUser: (user: User | null) => void;
 }>();
-
-type DashboardProviderProps = React.PropsWithChildren<{ session: Session }>;
 
 export const DashboardProvider = ({
   children,
@@ -32,5 +31,3 @@ export const DashboardProvider = ({
     </DashboardContextProvider>
   );
 };
-
-export default DashboardProvider;

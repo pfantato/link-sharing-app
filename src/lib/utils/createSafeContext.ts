@@ -15,5 +15,3 @@ export function createSafeContext<TValue>() {
 
   return [useSafeContext, context.Provider] as const;
 }
-
-export default createSafeContext;

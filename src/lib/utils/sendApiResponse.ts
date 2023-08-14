@@ -36,5 +36,3 @@ export const sendApiResponse = {
     );
   },
 };
-
-export default sendApiResponse;

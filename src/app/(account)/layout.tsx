@@ -2,13 +2,9 @@ import type { Metadata } from "next";
 
 import Image from "next/image";
 
-import { Instrument_Sans } from "next/font/google";
-
 import logoImage from "@public/logo.png";
 import styles from "./layout.module.scss";
 import { Suspense } from "react";
-
-const instrumentSans = Instrument_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Dashboard | Link Sharing App",

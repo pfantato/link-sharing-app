@@ -17,12 +17,12 @@ export const authOptions = {
   },
   providers: [
     GithubProvider({
-      clientId: "428c46d973869cae3e23",
-      clientSecret: "17bb3bd730d686de12de44bd9ba682617a8e937b",
+      clientId: `${process.env.GITHUB_CLIENT_ID}`,
+      clientSecret: `${process.env.GITHUB_CLIENT_SECRET}`,
     }),
     TwitchProvider({
-      clientId: "g6uy57wlhw64fsb2roqbv9ipb9ama6",
-      clientSecret: "uo3eb3m646890gozop61gywaq6lwmr",
+      clientId: `${process.env.TWITCH_CLIENT_ID}`,
+      clientSecret: `${process.env.TWITCH_CLIENT_SECRET}`,
     }),
     CredentialsProvider({
       name: "Credentials",
