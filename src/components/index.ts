@@ -5,6 +5,7 @@ export * from "./header";
 export * from "./icon";
 export * from "./input";
 export * from "./loading";
+export * from "./nav";
 export * from "./preview";
 export * from "./platformButton";
 export * from "./socialAuth";

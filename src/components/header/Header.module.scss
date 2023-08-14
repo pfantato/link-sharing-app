@@ -1,0 +1,29 @@
+.header {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: var(--spacing-lg, $spacing-lg) var(--spacing-md, $spacing-md);
+
+  background-color: var(--white, $white);
+}
+
+.logo {
+  flex: 0 1 30%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.nav {
+  flex: 1 auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.preview {
+  flex: 0 1 30%;
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md, $spacing-md);
+}

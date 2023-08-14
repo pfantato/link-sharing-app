@@ -3,7 +3,7 @@ import "client-only";
 
 import type { Platform } from "@prisma/client";
 
-import { signIn, getProviders } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import useSWR from "swr";
 
 import { useAuthProviders } from "@/lib";
@@ -29,7 +29,7 @@ export const SocialAuth = () => {
     data: platforms,
     isLoading,
     error,
-  } = useSWR("/v1/platforms", fetchFn, {
+  } = useSWR("/api/v1/platforms", fetchFn, {
     revalidateOnFocus: false,
   });
 

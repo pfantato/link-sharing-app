@@ -1,0 +1,5 @@
+.nav {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: var(--spacing-md, $spacing-md);
+}

@@ -1,0 +1,36 @@
+.link {
+  // Layout
+  display: flex;
+  flex-flow: row nowrap;
+  gap: var(--spacing-xs, $spacing-xs);
+  padding: var(--spacing-sm, $spacing-sm) var(--spacing-lg, $spacing-lg);
+
+  // Style
+  border-radius: var(--border-radius, $border-radius);
+  color: var(--gray, $gray);
+  text-decoration: none;
+  transition: color 300ms ease-in-out, background 300ms ease-in-out;
+
+  // Typography
+  @include heading-s;
+
+  &:hover,
+  &.active {
+    background-color: var(--primary-light, $primary-light);
+    color: var(--primary, $primary);
+  }
+}
+
+.icon {
+  --nav-link-icon-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 var(--nav-link-icon-size);
+  height: var(--nav-link-icon-size);
+  width: var(--nav-link-icon-size);
+
+  &.active {
+    fill: var(--primary, $primary);
+  }
+}

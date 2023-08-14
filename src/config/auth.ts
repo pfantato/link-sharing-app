@@ -2,7 +2,6 @@ import type { PrismaClient } from "@prisma/client";
 import type { AuthOptions, Session, User } from "next-auth";
 
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import TwitchProvider from "next-auth/providers/twitch";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -13,6 +12,7 @@ import { UserService } from "@/service";
 
 export const authOptions = {
   adapter: PrismaAdapter(prisma as PrismaClient),
+  secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
   },
@@ -49,9 +49,8 @@ export const authOptions = {
     }),
   ],
   pages: {
-    signIn: "/create-account",
+    signIn: "/login",
     signOut: "/logout",
-    verifyRequest: "/verify-request", // (used for check email message)
   },
   callbacks: {
     session: ({ session, token }: { session: Session; token: JWT }) => {
@@ -74,6 +73,4 @@ export const authOptions = {
       return token;
     },
   },
-};
-
-export default NextAuth(authOptions as AuthOptions);
+} as AuthOptions;

@@ -24,10 +24,11 @@ export default function DashboardLayout({ children }: React.PropsWithChildren) {
         <Image
           alt="Link Sharing App logo"
           src={logoImage.src}
-          // blurDataURL={logoImage.blurDataURL}
+          blurDataURL={logoImage.blurDataURL}
           quality={90}
-          width={182.5}
+          width={182}
           height={40}
+          priority={true}
         />
       </div>
       <Suspense fallback={<span>Loading... </span>}>

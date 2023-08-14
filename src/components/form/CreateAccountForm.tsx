@@ -20,7 +20,7 @@ export const CreateAccountForm = () => {
     email,
     password,
   }) => {
-    const response = await fetch("/v1/create-account", {
+    const response = await fetch("/api/v1/create-account", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,6 +54,10 @@ export const CreateAccountForm = () => {
       label: "Confirm password",
       placeholder: "••••••••",
       required: true,
+    },
+    csrfToken: {
+      type: "hidden",
+      defaultValue: csrfToken,
     },
   };
 
