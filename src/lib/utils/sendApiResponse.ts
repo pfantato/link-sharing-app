@@ -4,13 +4,13 @@ import { NextResponse } from "next/server";
 
 import { HttpStatusCodes } from "../enums";
 
+const headers = { "Content-Type": "application/json" };
+
 export const sendApiResponse = {
   [HttpStatusCodes.BAD_REQUEST]: (error: any) => {
     return NextResponse.json(
-      {
-        error,
-      },
-      { status: HttpStatusCodes.BAD_REQUEST }
+      { error },
+      { headers, status: HttpStatusCodes.BAD_REQUEST }
     );
   },
   [HttpStatusCodes.CREATED]: (data: any) => {
@@ -18,10 +18,8 @@ export const sendApiResponse = {
   },
   [HttpStatusCodes.INTERNAL_SERVER_ERROR]: (error: any) => {
     return NextResponse.json(
-      {
-        error,
-      },
-      { status: HttpStatusCodes.INTERNAL_SERVER_ERROR }
+      { error },
+      { headers, status: HttpStatusCodes.INTERNAL_SERVER_ERROR }
     );
   },
   [HttpStatusCodes.OK]: (data: any) => {
@@ -29,10 +27,14 @@ export const sendApiResponse = {
   },
   [HttpStatusCodes.UNAUTHORIZED]: (error: any) => {
     return NextResponse.json(
-      {
-        error,
-      },
-      { status: HttpStatusCodes.UNAUTHORIZED }
+      { error },
+      { headers, status: HttpStatusCodes.UNAUTHORIZED }
+    );
+  },
+  [HttpStatusCodes.NOT_FOUND]: (error: any) => {
+    return NextResponse.json(
+      { error },
+      { headers, status: HttpStatusCodes.NOT_FOUND }
     );
   },
 };

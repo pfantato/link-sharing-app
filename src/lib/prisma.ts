@@ -7,7 +7,7 @@ export let prisma: PrismaClient | undefined;
 
 if (typeof window === "undefined") {
   if (process.env.NEXT_PUBLIC_APP_ENV === "production" || !global.prisma) {
-    prisma = global.prisma ?? new PrismaClient();
+    prisma = new PrismaClient();
   } else {
     if (!global.prisma) {
       global.prisma = new PrismaClient();

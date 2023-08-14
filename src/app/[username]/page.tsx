@@ -1,4 +1,4 @@
-import { getProfileByUsername } from "@/service";
+import { UserService } from "@/service";
 
 type PageParams = {
   params: {
@@ -6,14 +6,16 @@ type PageParams = {
   };
 };
 
+const service = new UserService();
+
 export default async function Page({ params }: PageParams) {
   const { username } = params;
 
-  const profile = await getProfileByUsername(username);
+  const user = await service.getByUsername(username);
 
-  if (!profile) {
-    return <div>Profile not found</div>;
+  if (!user) {
+    return <div>User not found</div>;
   }
 
-  return <div>{JSON.stringify(profile)}</div>;
+  return <div>{JSON.stringify(user)}</div>;
 }

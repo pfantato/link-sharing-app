@@ -9,7 +9,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 import { prisma } from "@/lib";
 import { JWT } from "next-auth/jwt";
-import { login } from "@/service";
+import { UserService } from "@/service";
 
 export const authOptions = {
   adapter: PrismaAdapter(prisma as PrismaClient),
@@ -32,11 +32,15 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
+        const service = new UserService();
         const { email, password } = credentials || {};
 
         if (!email || !password) return null;
 
-        const user = await login({ email, password });
+        const user = await service.authenticate({
+          email,
+          password,
+        });
 
         if (!user) return null;
 
@@ -56,7 +60,6 @@ export const authOptions = {
         user: {
           ...session.user,
           id: token.id,
-          randomKey: token.randomKey,
         },
       };
     },

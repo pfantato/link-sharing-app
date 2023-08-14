@@ -2,7 +2,7 @@ import "server-only";
 import { hash } from "bcryptjs";
 
 import { HttpStatusCodes, sendApiResponse } from "@/lib";
-import { createAccount } from "@/service";
+import { UserService } from "@/service";
 
 export type CreateAccountForm = {
   email: string;
@@ -12,6 +12,8 @@ export type CreateAccountForm = {
 type CreateAccountRequest = Request & {
   body: CreateAccountForm;
 };
+
+const service = new UserService();
 
 export async function POST(req: CreateAccountRequest) {
   const { email, password } = await req.json();
@@ -23,7 +25,7 @@ export async function POST(req: CreateAccountRequest) {
       message: "Missing fields",
     });
 
-  const user = await createAccount({
+  const { data: user } = await service.create({
     email: email.toLocaleLowerCase(),
     password: hashed_password,
   });
