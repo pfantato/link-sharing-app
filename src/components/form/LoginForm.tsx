@@ -4,7 +4,7 @@ import "client-only";
 import type { SubmitHandler } from "react-hook-form";
 import type { CreateAccountFormSchema } from "@/lib/schemas";
 
-import { getCsrfToken, getProviders, signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 import { loginSchema, useCsrfToken } from "@/lib";
 

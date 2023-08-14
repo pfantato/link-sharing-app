@@ -1,20 +1,13 @@
-import "client-only";
-
 import type { PrismaClient } from "@prisma/client";
 import type { AuthOptions, Session, User } from "next-auth";
 
-import type { LoginForm } from "@/app/v1/login/route";
-
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
-import Auth0Provider from "next-auth/providers/auth0";
-import FacebookProvider from "next-auth/providers/facebook";
 import TwitchProvider from "next-auth/providers/twitch";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { PrismaAdapter } from "@auth/prisma-adapter";
 
 import { prisma } from "@/lib";
-import { login } from "@/service";
 import { JWT } from "next-auth/jwt";
 
 export const authOptions = {

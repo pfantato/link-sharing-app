@@ -1,15 +1,14 @@
 // "use client";
 
 import type { Metadata } from "next";
-import type { Session } from "next-auth";
+import { AuthOptions, getServerSession, type Session } from "next-auth";
 
 import { Instrument_Sans } from "next/font/google";
 
 import { Header } from "@/components";
 
 import { DashboardProvider } from "@/lib";
-
-import "./globals.scss";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 const instrumentSans = Instrument_Sans({ subsets: ["latin"] });
 
@@ -18,16 +17,14 @@ export const metadata: Metadata = {
   description: "User's dashboard",
 };
 
-type DashboardLayoutProps = React.PropsWithChildren<{
-  session: Session;
-}>;
+type DashboardLayoutProps = React.PropsWithChildren;
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
-  session,
 }: DashboardLayoutProps) {
+  const session = await getServerSession(authOptions as AuthOptions);
   return (
-    <DashboardProvider session={session}>
+    <DashboardProvider session={session as Session}>
       <Header />
       {children}
     </DashboardProvider>

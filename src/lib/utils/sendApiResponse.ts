@@ -25,7 +25,7 @@ export const sendApiResponse = {
     );
   },
   [HttpStatusCodes.OK]: (data: any) => {
-    return NextResponse.json({ data }, { status: HttpStatusCodes.OK });
+    return NextResponse.json(data, { status: HttpStatusCodes.OK });
   },
   [HttpStatusCodes.UNAUTHORIZED]: (error: any) => {
     return NextResponse.json(

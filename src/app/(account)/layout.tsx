@@ -5,7 +5,6 @@ import Image from "next/image";
 import { Instrument_Sans } from "next/font/google";
 
 import logoImage from "@public/logo.png";
-import "../globals.scss";
 import styles from "./layout.module.scss";
 import { Suspense } from "react";
 
