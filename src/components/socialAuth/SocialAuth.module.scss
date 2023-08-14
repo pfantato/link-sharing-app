@@ -1,0 +1,6 @@
+.wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--spacing-lg, $spacing-lg);
+  width: 100%;
+}

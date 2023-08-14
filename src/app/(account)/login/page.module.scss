@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--spacing-xs, $spacing-xs);
+}
+.title {
+  // Layout
+  margin: 0;
+
+  // Style
+  color: var(--dark-gray, $dark-gray);
+
+  // Typography
+  @include heading-m;
+}
+.subtitle {
+  // Layout
+  margin: 0;
+
+  // Style
+  color: var(--gray, $gray);
+
+  // Typography
+  @include body-m;
+}
+
+.link {
+  color: var(--gray, $gray);
+  text-align: center;
+  width: 100%;
+
+  @include body-m;
+
+  a {
+    color: var(--primary, $primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

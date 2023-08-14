@@ -1,0 +1,118 @@
+.wrapper {
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacing-xxs, $spacing-xxs);
+  width: 100%;
+
+  &--hidden {
+    display: none;
+  }
+}
+
+.inputGroup {
+  // Layout
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: var(--spacing-sm, $spacing-sm);
+  padding: 0 var(--spacing-md, $spacing-md);
+  position: relative;
+
+  // Style
+  appearance: none;
+  background: var(--white, $white);
+  border-radius: var(--border-radius, $border-radius);
+  border: 1px solid var(--border-color, $border-color);
+  cursor: text;
+  transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  will-change: box-shadow, border-color;
+
+  &:focus-within,
+  &.active {
+    border-color: var(--primary, $primary);
+    background: var(--white, $white);
+    box-shadow: 0px 0px 32px 0px rgba(99, 60, 255, 0.25);
+  }
+
+  &.error {
+    border-color: var(--red, $red);
+    color: var(--red, $red);
+
+    &:focus-within,
+    .active {
+      box-shadow: 0px 0px 32px 0px rgba(255, 99, 99, 0.25);
+    }
+  }
+}
+
+.input {
+  // Layout
+  padding: var(--spacing-sm, $spacing-sm) 0;
+
+  // Style
+  appearance: none;
+  background: var(--white, $white);
+  border-radius: var(--border-radius, $border-radius);
+  border: 0;
+  box-shadow: none;
+  caret-color: var(--primary, $primary);
+  color: var(--dark-gray, $dark-gray);
+  flex: 1 auto;
+
+  // Typography
+  @include body-m;
+
+  &:focus,
+  &.active {
+    outline: none;
+  }
+
+  &::placeholder {
+    opacity: 0.5;
+  }
+
+  &.error {
+    color: var(--red, $red);
+  }
+}
+
+.icon {
+  height: var(--spacing-md, $spacing-md);
+  width: var(--spacing-md, $spacing-md);
+}
+
+.label {
+  // Layout
+  flex: 1 100%;
+
+  // Style
+  color: var(--dark-gray, $dark-gray);
+
+  // Typography
+  @include body-s;
+
+  &.error {
+    color: var(--red, $red);
+  }
+}
+
+.errorMessage {
+  // Layout
+  align-items: center;
+  align-self: center;
+  display: flex;
+  height: fit-content;
+  flex: 1 auto;
+  padding: var(--spacing-sm, $spacing-sm) var(--spacing-md, $spacing-md);
+  position: absolute;
+  text-align: right;
+  right: 0;
+
+  // Style
+  background-color: var(--white, $white);
+  color: var(--red, $red);
+
+  // Typography
+  @include body-s;
+}

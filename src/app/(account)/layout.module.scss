@@ -1,0 +1,30 @@
+.page {
+  //Layout
+  align-items: flex-start;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 51px;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: var(--spacing-xl, $spacing-xl);
+  width: 100vw;
+
+  @include for-tablet-and-bigger {
+    //Layout
+    align-items: center;
+    justify-content: center;
+
+    // Styles
+    background-color: var(--light-gray, $light-gray);
+  }
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+.form {
+  max-width: 100%;
+  width: 476px;
+}
