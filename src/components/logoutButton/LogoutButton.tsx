@@ -4,5 +4,15 @@ import { signOut } from "next-auth/react";
 import { Button } from "../button";
 
 export const LogoutButton = () => (
-  <Button onClick={() => signOut()}>Sign out</Button>
+  <Button
+    variant="secondary"
+    onClick={() =>
+      signOut({
+        callbackUrl: "/login",
+        redirect: true,
+      })
+    }
+  >
+    Sign out
+  </Button>
 );

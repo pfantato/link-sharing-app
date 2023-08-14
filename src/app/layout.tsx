@@ -5,7 +5,9 @@ import { Instrument_Sans } from "next/font/google";
 
 import { IconSprite } from "@/components";
 
+import "./normalize.css";
 import "./globals.scss";
+import styles from "./layout.module.scss";
 
 export const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
@@ -23,7 +25,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body className={instrumentSans.variable}>
-        {children}
+        <main className={styles.main}>{children}</main>
         <IconSprite />
       </body>
     </html>

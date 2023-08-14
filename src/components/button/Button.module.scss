@@ -61,22 +61,7 @@
 
   &--secondary {
     background: var(--white, $white);
-
-    &:hover,
-    &:active,
-    &.hover,
-    &.active {
-      background: var(--primary-hover, $primary-hover);
-    }
-
-    &:disabled,
-    &.disabled {
-      &:hover,
-      &:active,
-      &.hover,
-      &.active {
-        background: var(--primary-hover, $primary-hover);
-      }
-    }
+    border: 1px solid var(--primary, $primary);
+    color: var(--primary, $primary);
   }
 }

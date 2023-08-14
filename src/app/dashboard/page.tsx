@@ -1,10 +1,12 @@
-import styles from "./page.module.scss";
 import { LogoutButton } from "@/components/logoutButton/LogoutButton";
 
-export default function DashboardPage() {
+import styles from "./page.module.scss";
+
+export default async function DashboardPage() {
   const classNames = {
     page: styles.page,
   };
+
   return (
     <div className={classNames.page}>
       Dashboard

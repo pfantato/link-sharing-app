@@ -27,7 +27,7 @@ export default function PlaygroundPage() {
     data: platforms,
     isLoading,
     error,
-  } = useSWR("/v1/platforms", fetchFn, {
+  } = useSWR("/api/v1/platforms", fetchFn, {
     revalidateOnFocus: false,
   });
 

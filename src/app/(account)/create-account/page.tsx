@@ -1,5 +1,9 @@
 import "server-only";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
+
+import { authOptions } from "@/config";
 
 import { Card, CreateAccountForm } from "@/components";
 
@@ -12,6 +16,11 @@ export default async function CreateAccountPage() {
     subtitle: styles.subtitle,
     login: styles.login,
   };
+
+  const session = await getServerSession(authOptions);
+  if (session) {
+    return redirect("/dashboard");
+  }
 
   return (
     <Card>

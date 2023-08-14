@@ -1,0 +1,46 @@
+.page {
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacing-lg, $spacing-lg);
+  padding: var(--spacing-lg, $spacing-lg);
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: var(--spacing-lg, $spacing-lg);
+}
+
+.pane {
+  // Layout
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xxl, $spacing-xxl);
+  padding: var(--spacing-xxl, $spacing-xxl);
+
+  // Style
+  border-radius: var(--border-radius-lg, $border-radius-lg);
+  background: var(--white, #fff);
+}
+
+.preview {
+  display: none;
+
+  @include for-desktop-and-bigger {
+    display: flex;
+    flex: 1 40%;
+    max-width: 560px;
+  }
+}
+
+.controls {
+  display: flex;
+  flex: 1 auto;
+  flex-flow: column nowrap;
+  gap: var(--spacing-lg, $spacing-lg);
+  justify-content: space-between;
+  width: 100%;
+}

@@ -5,11 +5,19 @@
   @include typography-variables;
 }
 
+html {
+  position: relative;
+  width: 100%;
+}
 body {
   color: var(--dark-gray, $dark-gray);
   background: var(--light-gray, $light-gray);
+  font-size: 16px;
+  position: relative;
+  width: 100%;
 }
 
 @include color-utility-classes;
 @include spacing-utility-classes;
 @include typography-utility-classes;
+@include skeleton-utility-classes;
