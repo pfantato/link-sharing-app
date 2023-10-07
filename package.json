@@ -45,7 +45,7 @@
     "autoprefixer": "^10.4.14",
     "eslint": "^8.47.0",
     "eslint-config-next": "^13.4.13",
-    "postcss": "^8.4.27",
+    "postcss": "^8.4.31",
     "prisma": "^5.1.1",
     "sass": "^1.65.1",
     "ts-node": "^10.9.1",
